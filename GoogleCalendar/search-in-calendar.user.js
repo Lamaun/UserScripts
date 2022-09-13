@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Search in Calender
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/Lamaun/UserScripts
 // @version      0.1
 // @description  Shows only matching events
 // @author       You
