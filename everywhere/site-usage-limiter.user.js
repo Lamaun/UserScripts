@@ -23,12 +23,12 @@
     const hacky_get_param = "userScriptUsageAllowance"
     if(document.URL.includes("https://calendar.google.com/calendar")){
         setInterval(()=>{
-            const first_description_link = document.evaluate('//*[contains(text(),"Description:")]/following::html-blob/a[starts-with(@href,"https://www.google.com/url?q=")]',
+            const first_description_link = document.evaluate('//a[starts-with(@href,"https://www.google.com/url?q=")]',
                                                              document,null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
             websites_to_block.some((website) => {
                 if(first_description_link.href.includes(website)){
                     // set usage quota
-                    const meetingText = document.evaluate('//*[contains(text(),"Description:")]/parent::*/parent::*/parent::*',
+                    const meetingText = document.evaluate('//*[contains(text(),"SiteUsageLimiter") and @role="heading"]/parent::*/parent::*',
                                                           document,null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.innerText.split("\n")[1]
                     //'Friday, 11 November⋅23:30 – 23:45','Friday, 27 January 2023⋅22:00 – 22:45' or '13 November 2022, 23:00 – 14 November 2022, 06:30'
                     var startTime, endTime
